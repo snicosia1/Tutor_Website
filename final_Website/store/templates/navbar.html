@@ -45,7 +45,15 @@
             -->
             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
           </div>
-          <a href="" class="btn btn-primary px-4">Sign In</a>
+          <div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-primary px-4">Log out</a>
+            <!-- Sign In Bttn -->
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary px-4">Sign In</a>
+            {% endif %}
+
+          </div>
         </div>
       </nav>
     </div>
