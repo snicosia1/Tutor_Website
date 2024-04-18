@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django import forms
+from .models import Tutor, Product, Customer, Order 
 
 
 def home(request):
@@ -14,9 +15,10 @@ def home(request):
 def tutor(request):
     return render(request, 'tutor.html', {})
 
-
+#We are going to need another HTML to show all the classes.
 def classes(request):
-    return render(request,'class.html',{})
+    all_Products = Product.objects.all()
+    return render(request,'class.html', {'all_Products': all_Products})
 
 
 def faq(request):
