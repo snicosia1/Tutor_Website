@@ -13,7 +13,8 @@ def home(request):
 
 
 def tutor(request):
-    return render(request, 'tutor.html', {})
+    tutors = Tutor.objects.all()
+    return render(request, 'tutor.html', {'tutors': tutors})
 
 #We are going to need another HTML to show all the classes.
 def classes(request):
