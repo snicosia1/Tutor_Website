@@ -10,7 +10,7 @@
       >
         <h3 class="display-3 font-weight-bold text-white">About Us</h3>
         <div class="d-inline-flex text-white">
-          <p class="m-0"><a class="text-white" href="">Home</a></p>
+          <p class="m-0"><a class="text-white" href="{% url 'home' %}">Home</a></p>
           <p class="m-0 px-2">/</p>
           <p class="m-0">About Us</p>
         </div>
@@ -25,15 +25,15 @@
           <div class="col-lg-5">
             <img
               class="img-fluid rounded mb-5 mb-lg-0"
-              src="img/about-1.jpg"
-              alt=""
+              src="{% static 'img/laptop-from-above.jpg' %}"
+              alt="Laptop on a desk"
             />
           </div>
           <div class="col-lg-7">
             <p class="section-title pr-5">
-              <span class="pr-2">Learn About Us</span>
+              <span class="pr-2">About Us</span>
             </p>
-            <h1 class="mb-4">Best School For Your Kids</h1>
+            <h1 class="mb-4">Mission Statement</h1>
             <p>
               Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
               dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
@@ -42,7 +42,41 @@
             </p>
             <div class="row pt-2 pb-4">
               <div class="col-6 col-md-4">
-                <img class="img-fluid rounded" src="img/about-2.jpg" alt="" />
+                <img class="img-fluid rounded" src="{% static 'img/laptop-computer-on-wooden-table.jpg' %}" alt="laptop on wooden table" />
+              </div>
+              <div class="col-6 col-md-8">
+                <ul class="list-inline m-0">
+                  <li class="py-2 border-top border-bottom">
+                    <i class="fa fa-check text-primary mr-3"></i>Labore eos amet
+                    dolor amet diam
+                  </li>
+                  <li class="py-2 border-bottom">
+                    <i class="fa fa-check text-primary mr-3"></i>Etsea et sit
+                    dolor amet ipsum
+                  </li>
+                  <li class="py-2 border-bottom">
+                    <i class="fa fa-check text-primary mr-3"></i>Diam dolor diam
+                    elitripsum vero.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <a href="" class="btn btn-primary mt-2 py-2 px-4">Learn More</a>
+          </div>
+			<div class="col-lg-7">
+            <p class="section-title pr-5">
+              <span class="pr-2">About Us</span>
+            </p>
+            <h1 class="mb-4">History</h1>
+            <p>
+              Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
+              dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
+              Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+              dolor
+            </p>
+            <div class="row pt-2 pb-4">
+              <div class="col-6 col-md-4">
+                <img class="img-fluid rounded" src="{% static 'img/laptop-computer-on-wooden-table.jpg' %}" alt="laptop on wooden table" />
               </div>
               <div class="col-6 col-md-8">
                 <ul class="list-inline m-0">
