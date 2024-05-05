@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 import datetime
 
 #Categories of products
@@ -12,26 +13,35 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=6)
+    description = models.CharField(max_length=250, default='', blank=True, null=True)
+    
+    def __str__(self):
+        return self.name;
+
+
+
+
 #Customers
 class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=10)
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=100)
-
+    products = models.ManyToManyField(Product, limit_choices_to={'name__in': []})
+    
+    
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return self.user.username
 
 
-#All our products
-class Product(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(default=0, decimal_places=2, max_digits=6)
-    description = models.CharField(max_length=250, default='', blank=True, null=True)
 
-    def __str__(self):
-        return self.name;
+
 
 
 

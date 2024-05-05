@@ -16,10 +16,19 @@ def tutor(request):
     tutors = Tutor.objects.all()
     return render(request, 'tutor.html', {'tutors': tutors})
 
-#We are going to need another HTML to show all the classes.
+
 def classes(request):
     all_Products = Product.objects.all()
     return render(request,'class.html', {'all_Products': all_Products})
+
+def add_class(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            product = request.POST.get()
+            user = request.user
+            currCustomer = Customer.objects.get(user=user)
+            currCustomer.products.add(product)
+    return render(request, 'class.html', {})
 
 
 def faq(request):
@@ -66,6 +75,7 @@ def register_user(request):
             #login in user
             user = authenticate(username=username, password=password)
             login(request, user)
+            customer_instance = Customer.objects.create(user=user)
             messages.success(request, 'Account created successfully')
             return redirect('home')
         else:
