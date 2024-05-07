@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 
@@ -31,9 +32,12 @@
           <div class="col-lg-7 mb-5">
             <div class="contact-form">
               <div id="success"></div>
-              <form name="sentMessage" id="contactForm" novalidate="novalidate">
+
+              <form action="{% url 'contact' %}" method="POST"> <!--  name="sentMessage"  id="contactForm" novalidate="novalidate -->
+                {% csrf_token %}
                 <div class="control-group">
                   <input
+                    name="name"
                     type="text"
                     class="form-control"
                     id="name"
@@ -45,6 +49,7 @@
                 </div>
                 <div class="control-group">
                   <input
+                    name="email"
                     type="email"
                     class="form-control"
                     id="email"
@@ -56,6 +61,7 @@
                 </div>
                 <div class="control-group">
                   <input
+                    name="subject"
                     type="text"
                     class="form-control"
                     id="subject"
@@ -67,6 +73,7 @@
                 </div>
                 <div class="control-group">
                   <textarea
+                    name="message"
                     class="form-control"
                     rows="6"
                     id="message"
@@ -86,14 +93,14 @@
                   </button>
                 </div>
               </form>
+
             </div>
           </div>
           <div class="col-lg-5 mb-5">
             <p>
-              Labore sea amet kasd diam justo amet ut vero justo. Ipsum ut et
-              kasd duo sit, ipsum sea et erat est dolore, magna ipsum et magna
-              elitr. Accusam accusam lorem magna, eos et sed eirmod dolor est
-              eirmod eirmod amet.
+            We are dedicated to providing the best tutoring experience possible, and your feedback
+            is crucial in achieving that goal. Your input helps us refine our services and ensure
+            that every interaction is enriching and empowering.
             </p>
             <div class="d-flex">
               <i
@@ -112,7 +119,7 @@
               ></i>
               <div class="pl-3">
                 <h5>Email</h5>
-                <p>info@example.com</p>
+                <p>info@tutorgroup.com</p>
               </div>
             </div>
             <div class="d-flex">
@@ -122,7 +129,7 @@
               ></i>
               <div class="pl-3">
                 <h5>Phone</h5>
-                <p>+012 345 67890</p>
+                <p>+1 (210) 345-6789</p>
               </div>
             </div>
             <div class="d-flex">

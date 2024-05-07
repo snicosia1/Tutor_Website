@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from .models import Contact
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
@@ -30,3 +31,10 @@ class SignUpForm(UserCreationForm):
 	    self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 	    self.fields['password2'].label = ''
 	    self.fields['password2'].help_text = ''
+
+
+#Contact Information
+class ContactForm(forms.ModelForm):
+	class Meta:
+		model = Contact
+		fields = ('name', 'email', 'subject', 'message')

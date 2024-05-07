@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, ContactForm
 from django import forms
 from .models import Tutor, Product, Customer, Order 
 
@@ -38,9 +38,38 @@ def faq(request):
 def about(request):
     return render(request,'about.html',{})
 
-def contact(request):
-    return render(request,'contact.html',{})
+# def contact(request):
+#     return render(request, 'contact.html', {})
 
+# def contact(request):
+#     if request.method == "POST":
+#         name = request.POST['name']
+#         email = request.POST['email']
+#         subject = request.POST['subject']
+#         message = request.POST['message']
+#         messages.success(request, ("Email send successfully!"))
+#
+#
+#         return render(request, 'contact.html', {})
+#
+#     else:
+#         return render(request,'contact.html',{})
+
+
+def contact(request):
+    form = ContactForm()
+    if request.method == "POST":
+        form = ContactForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, ("Email send successfully!"))
+            return render(request, 'contact.html', {})
+        else:
+            messages.success(request, ("There was an error sending email, try again!"))
+            return render(request, 'contact.html', {})
+
+    else:
+        return render(request, 'contact.html', {form:'form'})
 
 def login_user(request):
     if request.method == "POST":

@@ -41,8 +41,18 @@ class Customer(models.Model):
 
 
 
+#Contact Information
+class Contact(models.Model):
+    name = models.CharField(max_length=150)
+    # first_name = models.CharField(max_length=50)
+    # last_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    subject = models.CharField(max_length=150, default='', blank=True, null=True )
+    message = models.CharField(max_length=750, default='', blank=True, null=True)
+    # image = models.ImageField(upload_to='uploads/tutor/', blank=True, null=True)
 
-
+    def __str__(self):
+        return f'{self.name}  ||  {self.subject}'
 
 
 #Customer Orders
@@ -57,7 +67,6 @@ class Order(models.Model):
 
     def __str__(self):
         return self.product
-
 
 
 #Tutor Information
